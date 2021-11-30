@@ -8,19 +8,15 @@ import java.math.RoundingMode;
 import java.security.SecureRandom;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
     private static final SecureRandom random = new SecureRandom();
 
     public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    
+        Scanner sc = new Scanner(System.in);
+
         List<Athlete> athleteList = new ArrayList<>();
         for (int i = 0; i <= 500; i++) {
             Athlete athlete = new Athlete();
@@ -40,20 +36,20 @@ public class Main {
         String userImput = sc.next();
 
 
-        List<Athlete> addList = new ArrayList<>();        
-         
+        List<Athlete> addList = new ArrayList<>();
+
         if (userImput.toUpperCase().equals("Y")) {
             for (Athlete ath : athleteList) {
-                if(ath.getActive()){
-                  addList.add(ath);
+                if (ath.getActive()) {
+                    addList.add(ath);
                 }
             }
-            for(Athlete a : addList){
-            System.out.println(a);
+            for (Athlete a : addList) {
+                System.out.println(a);
             }
             System.out.println("Délka listu je: " + addList.size());
         } else if (userImput.toUpperCase().equals("N")) {
-            addList=athleteList;
+            addList = athleteList;
             for (Athlete a : addList) {
                 System.out.println(a);
             }
@@ -61,22 +57,20 @@ public class Main {
         } else {
             System.out.println("F.U.");
         }
-        
-        
-        
-    System.out.println("Do you want to see top 100 players by earnings? Y/N");
+
+
+        System.out.println("Do you want to see top 100 players by earnings? Y/N");
         String userImputTop100 = sc.next();
-        List<Athlete> addListToTop100 = new ArrayList<>();     
-        
-        
-        
+        List<Athlete> addListToTop100 = new ArrayList<>();
+
+
         if (userImputTop100.toUpperCase().equals("Y")) {
             Collections.sort(addList);
-                  for (int i=0;i<100;i++) {
-                  addListToTop100.add(addList.get(i));
+            for (int i = 0; i < 100; i++) {
+                addListToTop100.add(addList.get(i));
             }
-            for(Athlete a : addListToTop100){
-            System.out.println(a);
+            for (Athlete a : addListToTop100) {
+                System.out.println(a);
             }
             System.out.println("Délka listu je: " + addListToTop100.size());
         } else if (userImputTop100.toUpperCase().equals("N")) {
@@ -87,9 +81,36 @@ public class Main {
         } else {
             System.out.println("F.U.");
         }
-        
 
-        
+        System.out.println("Do you want to show names and how many duplicates are in the list? Y/n: ");
+        String userImputStatistics = sc.next();
+        if ("Y".equals(userImputStatistics.toUpperCase())) {
+            Collections.sort(addList, new Comparator<Athlete>() {
+                @Override
+                public int compare(Athlete o1, Athlete o2) {
+                    return o1.getName().compareTo(o2.getName());
+                }
+            });
+            int numberOfDuplicates = 1;
+            int loop = 1;
+            for (Athlete tempAthlete : addList) {
+                if (loop + 1 > addList.size()){
+                    System.out.println(addList.get(loop - 1).getName() + " " + numberOfDuplicates + " times");
+                    break;
+                }
+                if (tempAthlete.getName().equals(addList.get(loop).getName())) {
+                    numberOfDuplicates++;
+                } else {
+                    System.out.println(addList.get(loop - 1).getName() + " " + numberOfDuplicates + " times");
+                    numberOfDuplicates = 1;
+                }
+                loop++;
+            }
+        }
+        else{
+            System.out.println("Why did you start this app then :)");
+        }
+
     }
 
     public static BigDecimal randomBigDecimal(int range) {
@@ -106,25 +127,25 @@ public class Main {
     }
 
     private static String[] names = {
-        "Liam",
-        "Olivia",
-        "Noah",
-        "Emma",
-        "Oliver",
-        "Ava",
-        "William",
-        "Sophia",
-        "Elijah",
-        "Isabella",
-        "James",
-        "Charlotte",
-        "Benjamin",
-        "Amelia",
-        "Lucas",
-        "Mia",
-        "Mason",
-        "Harper",
-        "Ethan",
-        "Evelyn"
+            "Liam",
+            "Olivia",
+            "Noah",
+            "Emma",
+            "Oliver",
+            "Ava",
+            "William",
+            "Sophia",
+            "Elijah",
+            "Isabella",
+            "James",
+            "Charlotte",
+            "Benjamin",
+            "Amelia",
+            "Lucas",
+            "Mia",
+            "Mason",
+            "Harper",
+            "Ethan",
+            "Evelyn"
     };
 }
