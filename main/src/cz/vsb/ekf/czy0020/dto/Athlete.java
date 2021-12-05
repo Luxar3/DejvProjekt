@@ -93,11 +93,12 @@ public class Athlete implements Comparable<Athlete>{
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
+                ", count of medals='" + countOfMedals + '\'' +
                 ", sport=" + sport +
                 ", birthDate=" + birthDate +
                 ", prizeMoney=" + prizeMoney +
                 ", isActive=" + isActive +
-                ", lasUpdateTs=" + lastUpdateTs;
+                ", lasUpdateTs=" + lastUpdateTs + "\n";
     }
 
     @Override

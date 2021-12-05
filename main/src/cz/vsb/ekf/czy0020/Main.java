@@ -30,11 +30,14 @@ public class Main {
             athlete.setLastUpdateTs(LocalDateTime.now().minusDays(random.nextInt(30)));
             athlete.setPrizeMoney(randomBigDecimal(1000000));
             athlete.setSport(randomEnum(Sport.class));
-            athlete.setCountOfMedals(new Random().nextInt(20));
+            athlete.setCountOfMedals(new Random().nextInt(21));
             athleteList.add(athlete);
         }
 
         Application.run(sc, athleteList);
+
+        Application a = new Application();
+        System.out.println(a.getMostSuccess(athleteList));
 
 
     }

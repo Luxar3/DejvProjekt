@@ -3,7 +3,8 @@ package cz.vsb.ekf.czy0020.dto;
 import java.math.BigDecimal;
 import java.util.*;
 
-public class Application {
+public class Application implements MostSuccess{
+
     public static void run(Scanner sc, List<Athlete> athleteList) {
         //Úkol číslo 2.1
         System.out.println("Do you want to filter Inactive atletes? Y/N");
@@ -163,5 +164,16 @@ public class Application {
 
 
 
+    }
+
+    // generic types ukol 1 2 "3?"
+    @Override
+    public List<Athlete> getMostSuccess(List<Athlete> original) {
+        List<Athlete> sortedByMedals = new ArrayList<>();
+        Collections.sort(original, Collections.reverseOrder((Athlete o1, Athlete o2) -> o1.getCountOfMedals().compareTo(o2.getCountOfMedals())));
+        for (int i = 0; i < 10; i++) {
+            sortedByMedals.add(original.get(i));
+        }
+        return  sortedByMedals;
     }
 }
