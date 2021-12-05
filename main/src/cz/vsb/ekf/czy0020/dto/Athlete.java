@@ -13,6 +13,15 @@ public class Athlete implements Comparable<Athlete>{
     private BigDecimal prizeMoney;
     private Boolean isActive;
     private LocalDateTime lastUpdateTs;
+    private Integer countOfMedals;
+
+    public Integer getCountOfMedals() {
+        return countOfMedals;
+    }
+
+    public void setCountOfMedals(Integer countOfMedals) {
+        this.countOfMedals = countOfMedals;
+    }
 
     public Integer getId() {
         return id;
