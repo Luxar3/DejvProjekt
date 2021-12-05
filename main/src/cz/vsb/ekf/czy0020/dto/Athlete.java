@@ -15,7 +15,7 @@ public class Athlete implements Comparable<Athlete>{
     private LocalDateTime lastUpdateTs;
     private Integer countOfMedals;
 
-    public Integer getCountOfMedals() {
+    public Integer getCountOfOscars() {
         return countOfMedals;
     }
 
@@ -98,7 +98,7 @@ public class Athlete implements Comparable<Athlete>{
                 ", birthDate=" + birthDate +
                 ", prizeMoney=" + prizeMoney +
                 ", isActive=" + isActive +
-                ", lasUpdateTs=" + lastUpdateTs + "\n";
+                ", lasUpdateTs=" + lastUpdateTs;
     }
 
     @Override

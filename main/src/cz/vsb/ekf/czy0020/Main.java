@@ -1,5 +1,6 @@
 package cz.vsb.ekf.czy0020;
 
+import cz.vsb.ekf.czy0020.dto.Actor;
 import cz.vsb.ekf.czy0020.dto.Application;
 import cz.vsb.ekf.czy0020.dto.Athlete;
 import cz.vsb.ekf.czy0020.dto.Sport;
@@ -20,7 +21,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         List<Athlete> athleteList = new ArrayList<>();
-        for (int i = 0; i <= 10000; i++) {
+        for (int i = 1; i <= 10000; i++) {
             Athlete athlete = new Athlete();
             athlete.setId(i);
             athlete.setActive(i % 10 != 0);
@@ -34,15 +35,28 @@ public class Main {
             athleteList.add(athlete);
         }
 
+        List<Actor> actorList = new ArrayList<>();
+        for (int i = 0; i < 30; i++) {
+            Actor actor = new Actor();
+            actor.setCountOfOscars(new Random().nextInt(21));
+            actor.setId(i);
+            actor.setName(names[random.nextInt(names.length)]);
+            actorList.add(actor);
+        }
+
+
         Application.run(sc, athleteList);
 
         Application a = new Application();
-        System.out.println(a.getMostSuccess(athleteList));
+        for (Athlete tempA : a.getMostSuccess(athleteList)) {
+            System.out.println(tempA);
+        }
+        System.out.println();
+        Actor actor = new Actor();
+        System.out.println(actor.getMostSuccess(actorList));
 
 
     }
-
-
 
 
     public static BigDecimal randomBigDecimal(int range) {
@@ -59,25 +73,25 @@ public class Main {
     }
 
     private static String[] names = {
-        "Liam",
-        "Olivia",
-        "Noah",
-        "Emma",
-        "Oliver",
-        "Ava",
-        "William",
-        "Sophia",
-        "Elijah",
-        "Isabella",
-        "James",
-        "Charlotte",
-        "Benjamin",
-        "Amelia",
-        "Lucas",
-        "Mia",
-        "Mason",
-        "Harper",
-        "Ethan",
-        "Evelyn"
+            "Liam",
+            "Olivia",
+            "Noah",
+            "Emma",
+            "Oliver",
+            "Ava",
+            "William",
+            "Sophia",
+            "Elijah",
+            "Isabella",
+            "James",
+            "Charlotte",
+            "Benjamin",
+            "Amelia",
+            "Lucas",
+            "Mia",
+            "Mason",
+            "Harper",
+            "Ethan",
+            "Evelyn"
     };
 }
